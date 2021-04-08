@@ -17,8 +17,8 @@ There are 4 variants of integral lists:
 
 |                      | ordered? | pop_front() | pop_back() | push_front() | push_back() | random access? |  lookup  | random insert* | random delete* | notes |
 | :------------------- | :------: | :---------: | :--------: | :----------: | :---------: | :------------: | :------: | :------------: | :------------: | ----: |
-| std::vector          |      yes |         N/A |       O(1) |          N/A |        O(1) |            yes |     O(n) |           O(1) |           O(n) |       |
-| std::deque           |      yes |        O(1) |       O(1) |         O(1) |        O(1) |            yes |     O(n) |           O(1) |           O(n) |       |
+| std::vector          |      yes |         N/A |       O(1) |          N/A |        O(1) |            yes |     O(n) |           O(n) |           O(n) |       |
+| std::deque           |      yes |        O(1) |       O(1) |         O(1) |        O(1) |            yes |     O(n) |           O(n) |           O(n) |       |
 | std::list            |      yes |        O(1) |       O(1) |         O(1) |        O(1) |             no |     O(n) |           O(1) |           O(1) |       |
 | std::set             |       no |         N/A |        N/A |          N/A |         N/A |            N/A | O(log n) |           O(1) |           O(1) | sorted, but not ordered. requires comparison. no duplicates. |
 | std::unordered_set   |       no |         N/A |        N/A |          N/A |         N/A |            N/A |     O(1) |           O(1) |           O(1) | requires hashing, equality. no duplicates.|
@@ -26,4 +26,4 @@ There are 4 variants of integral lists:
 
 Notes:  
 "ordered" is defined to be the concept of being able to treat the container like a sequence. For example, std::list is ordered, because if you append to the end repeatedly, then iterate over it, you will read the items in the same order your wrote them. This is not true for std::set, where the order of iteration will be in ascending order.  
-"random insert/delete" is defined to be the action of having an arbitrary iterator somewhere in the middle of a container, and inserting over (often via emplace()) or removing (often via erase()) that element.
+"random insert/delete" is defined to be the action of having an arbitrary iterator somewhere in the middle of a container, and inserting an element in-place (which often shifts the element over one, often via emplace()) or removing (often via erase()) that element.
